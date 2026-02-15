@@ -1,0 +1,1 @@
+{"idea": "ClinicFlow AI: Real-time voice AI for clinical phone calls that extracts structured medical data, flags safety concerns, and automates care workflows", "totalSteps": 4, "planSteps": ["Setup Next.js + shadcn/ui foundation", "Build real-time voice processing pipeline", "Implement multi-agent clinical reasoning system", "Create EMR integration dashboard and demo"]}
