@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ClinicFlow AI
+
+Real-time voice AI system for clinical phone calls that extracts structured medical data, flags safety concerns, and automates care workflows.
+
+## Features
+
+- **Real-time Voice Processing**: Record or upload clinical phone calls for instant transcription
+- **Multi-Agent AI System**: 5 specialized Claude agents work in parallel:
+  - **Triage Agent**: Assesses urgency and safety concerns
+  - **Clinical Extractor**: Extracts symptoms, medications, vitals, and history
+  - **Safety Checker**: Identifies drug interactions and contraindications
+  - **Action Coordinator**: Plans follow-ups, prescriptions, and referrals
+  - **Summary Generator**: Creates clinical documentation summaries
+- **Live Transcript**: Real-time display of conversation transcription
+- **Clinical Insights Dashboard**: Structured medical data extraction with safety flags
+- **Demo Mode**: Three pre-built scenarios to showcase capabilities
+
+## Tech Stack
+
+- **Frontend**: Next.js 16, React 19, TypeScript, Tailwind CSS, shadcn/ui
+- **AI/ML**:
+  - OpenAI Whisper (transcription)
+  - Anthropic Claude Sonnet 3.5 (multi-agent analysis)
+- **Deployment**: Vercel-ready
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ or Bun
+- OpenAI API key
+- Anthropic API key
+
+### Installation
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+git clone <repo-url>
+cd clinicflow-ai
+```
+
+2. Install dependencies
+```bash
+bun install
+```
+
+3. Set up environment variables
+```bash
+cp .env.example .env.local
+```
+
+Edit `.env.local` and add your API keys:
+```
+OPENAI_API_KEY=your_openai_api_key
+ANTHROPIC_API_KEY=your_anthropic_api_key
+```
+
+4. Run the development server
+```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Demo Mode
+1. Select a demo scenario from the dropdown:
+   - Routine Follow-up
+   - Urgent Symptoms
+   - Medication Concern
+2. Click "Run Demo" to see the AI analysis in action
 
-## Learn More
+### Live Recording
+1. Click "Start Recording" and allow microphone access
+2. Have a conversation or play a clinical call recording
+3. Click "Stop Recording" when done
+4. View real-time transcript and AI-generated insights
 
-To learn more about Next.js, take a look at the following resources:
+### Upload Audio
+1. Click "Upload Audio"
+2. Select an audio file (supports common formats)
+3. System will transcribe and analyze automatically
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Multi-Agent Architecture
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The system uses a sophisticated multi-agent approach where 5 specialized Claude agents run in parallel:
 
-## Deploy on Vercel
+```
+Audio Input → Whisper Transcription → Multi-Agent Analysis
+                                            ├─ Triage Agent (urgency)
+                                            ├─ Clinical Extractor (data)
+                                            ├─ Safety Checker (interactions)
+                                            ├─ Action Coordinator (next steps)
+                                            └─ Summary Generator (documentation)
+                                                    ↓
+                                            Consolidated Insights
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Prize Tracks
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project targets:
+- **OpenEvidence Healthcare Track** ($4k + interviews)
+- **Zingage Voice AI for Healthcare** (Airpods Max + fast-track interview)
+- **Greylock Best Multi-turn Agent** (Warriors tickets + office hours)
+- **OpenAI AI Track** (Guaranteed interview + ChatGPT Pro)
+- **Most Impactful** (Addresses critical healthcare communication gaps)
+- **Most Technically Complex** (Multi-agent orchestration + real-time processing)
+
+## Impact
+
+Healthcare runs on phone calls, but critical information gets lost, delayed, or mishandled. ClinicFlow AI:
+- Reduces medical errors by flagging drug interactions and safety concerns
+- Improves care coordination through automated action planning
+- Saves clinician time with automated documentation
+- Ensures no patient concern goes unnoticed
+
+## License
+
+MIT
+
+## Built With
+
+- [Next.js](https://nextjs.org/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Anthropic Claude](https://www.anthropic.com/)
+- [OpenAI Whisper](https://openai.com/research/whisper)
