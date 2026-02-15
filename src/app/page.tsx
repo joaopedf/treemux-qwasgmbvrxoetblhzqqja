@@ -6,10 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Mic, Square, Activity, AlertTriangle, Clock } from 'lucide-react';
+import { Mic, Square, Activity, AlertTriangle, Clock, TestTube } from 'lucide-react';
 import { TriageForm } from '@/components/triage-form';
 import { PatientSummary } from '@/components/patient-summary';
 import { useTriageStore } from '@/lib/store';
+import { DemoExamples } from '@/components/demo-examples';
 
 export default function Home() {
   const { sessions } = useTriageStore();
@@ -43,10 +44,14 @@ export default function Home() {
 
         {/* Main Content */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 max-w-md">
+          <TabsList className="grid w-full grid-cols-3 max-w-2xl">
             <TabsTrigger value="new" className="flex items-center gap-2">
               <Mic className="w-4 h-4" />
               New Patient
+            </TabsTrigger>
+            <TabsTrigger value="demo" className="flex items-center gap-2">
+              <TestTube className="w-4 h-4" />
+              Demo Cases
             </TabsTrigger>
             <TabsTrigger value="history" className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
@@ -124,6 +129,20 @@ export default function Home() {
                 </CardContent>
               </Card>
             </div>
+          </TabsContent>
+
+          <TabsContent value="demo" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Try Demo Cases</CardTitle>
+                <CardDescription>
+                  Test the triage system with realistic patient scenarios. Click any case to analyze it.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <DemoExamples />
+              </CardContent>
+            </Card>
           </TabsContent>
 
           <TabsContent value="history" className="space-y-4">

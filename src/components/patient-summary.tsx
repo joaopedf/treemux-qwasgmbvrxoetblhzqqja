@@ -110,24 +110,56 @@ export function PatientSummary() {
         </div>
       )}
 
-      {/* Recommendations */}
-      {latestSession.recommendations && latestSession.recommendations.length > 0 && (
-        <div>
-          <h3 className="font-semibold text-sm mb-2 text-muted-foreground">Recommendations</h3>
-          <ul className="space-y-2">
-            {latestSession.recommendations.map((rec, idx) => (
-              <li key={idx} className="text-sm flex items-start gap-2">
+      {/* Vital Signs Concerns */}
+      {latestSession.vitalSignsConcerns && latestSession.vitalSignsConcerns.length > 0 && (
+        <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
+          <h3 className="font-semibold text-sm mb-2 text-blue-900">Vital Signs to Monitor</h3>
+          <ul className="space-y-1.5">
+            {latestSession.vitalSignsConcerns.map((vital, idx) => (
+              <li key={idx} className="text-sm flex items-start gap-2 text-blue-900">
                 <span className="text-blue-600 mt-0.5">•</span>
-                <span>{rec}</span>
+                <span>{vital}</span>
               </li>
             ))}
           </ul>
         </div>
       )}
 
+      {/* Recommendations */}
+      {latestSession.recommendations && latestSession.recommendations.length > 0 && (
+        <div className="bg-green-50 p-3 rounded-lg border border-green-200">
+          <h3 className="font-semibold text-sm mb-2 text-green-900">Immediate Actions</h3>
+          <ol className="space-y-2">
+            {latestSession.recommendations.map((rec, idx) => (
+              <li key={idx} className="text-sm flex items-start gap-2 text-green-900">
+                <span className="font-semibold text-green-600 mt-0.5 min-w-[1.25rem]">{idx + 1}.</span>
+                <span>{rec}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      {/* Differential Diagnosis */}
+      {latestSession.differentialDiagnosis && latestSession.differentialDiagnosis.length > 0 && (
+        <div className="bg-purple-50 p-3 rounded-lg border border-purple-200">
+          <h3 className="font-semibold text-sm mb-2 text-purple-900">Differential Diagnosis</h3>
+          <p className="text-xs text-purple-700 mb-2">Consider these conditions:</p>
+          <div className="space-y-1.5">
+            {latestSession.differentialDiagnosis.map((dx, idx) => (
+              <div key={idx} className="text-sm flex items-start gap-2 text-purple-900">
+                <span className="text-purple-600 mt-0.5">•</span>
+                <span>{dx}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Timestamp */}
-      <div className="text-xs text-muted-foreground pt-2 border-t">
-        Assessment completed: {new Date(latestSession.timestamp).toLocaleString()}
+      <div className="text-xs text-muted-foreground pt-2 border-t flex items-center justify-between">
+        <span>Assessment ID: {latestSession.id.slice(0, 8).toUpperCase()}</span>
+        <span>{new Date(latestSession.timestamp).toLocaleString()}</span>
       </div>
     </div>
   );

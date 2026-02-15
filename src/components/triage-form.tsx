@@ -99,6 +99,8 @@ export function TriageForm() {
         urgency: data.urgency,
         summary: data.summary,
         recommendations: data.recommendations || [],
+        differentialDiagnosis: data.differentialDiagnosis,
+        vitalSignsConcerns: data.vitalSignsConcerns,
       };
 
       addSession(session);

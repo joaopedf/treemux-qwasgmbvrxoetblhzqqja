@@ -10,6 +10,8 @@ export interface TriageSession {
   urgency: UrgencyLevel;
   summary: string;
   recommendations: string[];
+  differentialDiagnosis?: string[];
+  vitalSignsConcerns?: string[];
   vitalSigns?: {
     bloodPressure?: string;
     heartRate?: number;
