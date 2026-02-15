@@ -4,6 +4,7 @@ import { RecordingControls } from '@/components/RecordingControls';
 import { TranscriptView } from '@/components/TranscriptView';
 import { ActionItemsList } from '@/components/ActionItemsList';
 import { InsightsPanel } from '@/components/InsightsPanel';
+import { ExportButton } from '@/components/ExportButton';
 import { Mic2 } from 'lucide-react';
 
 export default function Home() {
@@ -12,16 +13,19 @@ export default function Home() {
       {/* Header */}
       <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary text-primary-foreground">
-              <Mic2 className="h-5 w-5" />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary text-primary-foreground">
+                <Mic2 className="h-5 w-5" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold">VoiceThread</h1>
+                <p className="text-sm text-muted-foreground">
+                  AI-Powered Meeting Intelligence
+                </p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-2xl font-bold">VoiceThread</h1>
-              <p className="text-sm text-muted-foreground">
-                AI-Powered Meeting Intelligence
-              </p>
-            </div>
+            <ExportButton />
           </div>
         </div>
       </header>
