@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import ResearchPanel from '@/components/ResearchPanel';
 import type { ResearchNode } from '@/lib/agents';
+import { generateDemoGraph } from '@/lib/demo-data';
 
 // Dynamically import React Flow to avoid SSR issues
 const ResearchGraph = dynamic(() => import('@/components/ResearchGraph'), {
@@ -19,10 +20,26 @@ export default function Home() {
   const [nodes, setNodes] = useState<any[]>([]);
   const [edges, setEdges] = useState<any[]>([]);
   const [selectedNode, setSelectedNode] = useState<ResearchNode | null>(null);
+  const [showDemo, setShowDemo] = useState(false);
+
+  useEffect(() => {
+    // Load demo graph after 2 seconds if no research started
+    const timer = setTimeout(() => {
+      if (nodes.length === 0) {
+        const demo = generateDemoGraph();
+        setNodes(demo.nodes);
+        setEdges(demo.edges);
+        setShowDemo(true);
+      }
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [nodes.length]);
 
   const handleResearchComplete = (data: any) => {
     // This would parse the research data and update the graph
     console.log('Research complete:', data);
+    setShowDemo(false);
   };
 
   const handleNodeClick = (node: any) => {

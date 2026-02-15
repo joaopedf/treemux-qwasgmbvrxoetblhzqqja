@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useMemo } from 'react';
 import ReactFlow, {
   addEdge,
   useNodesState,
@@ -13,6 +13,7 @@ import ReactFlow, {
 import type { Node, Edge, Connection } from 'reactflow';
 import 'reactflow/dist/style.css';
 import type { ResearchNode } from '@/lib/agents';
+import CustomNode from './CustomNode';
 
 type FlowNode = Node<ResearchNode>;
 
@@ -47,6 +48,8 @@ export default function ResearchGraph({
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
+  const nodeTypes = useMemo(() => ({ custom: CustomNode }), []);
+
   const onConnect = useCallback(
     (connection: Connection) => setEdges((eds) => addEdge(connection, eds)),
     [setEdges]
@@ -70,6 +73,7 @@ export default function ResearchGraph({
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         onNodeClick={handleNodeClick}
+        nodeTypes={nodeTypes}
         fitView
         className="bg-gray-50"
       >
