@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛡️ Sentinel AI
 
-## Getting Started
+**AI-Native Defense Operations Platform**
 
-First, run the development server:
+Sentinel AI reimagines PagerDuty for physical security and defense operations. Built for TreeHacks 2026, this multi-agent system uses OpenAI GPT-4o to provide intelligent threat assessment, pattern correlation, and automated response coordination.
+
+## 🎯 What It Does
+
+Sentinel AI is a real-time defense operations platform that:
+
+- **Monitors Live Threats**: Simulates real-time sensor feeds from motion, audio, network, perimeter, and access control systems
+- **Multi-Agent Analysis**: Uses 5 specialized AI agents to assess threats, correlate patterns, coordinate responses, generate SITREPs, and assist operators
+- **Intelligent Response**: Automatically determines threat levels, assigns response teams, and creates action plans
+- **Operator Interface**: Conversational AI assistant that can answer questions and provide recommendations
+
+## 🏆 Prize Categories
+
+This project targets:
+- TreeHacks Grand Prize (innovation + functionality + execution)
+- OpenAI AI Track (creative use of GPT-4o multi-agent system)
+- Y Combinator Challenge (reimagining PagerDuty for defense with AI)
+- Best Hardware Hack (designed for sensor integration)
+- Greylock Multi-turn Agent Prize (complex reasoning across agents)
+- Most Technically Complex
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Bun installed
+- OpenAI API key
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+# Install dependencies
+bun install
+
+# Set up environment variables
+echo "OPENAI_API_KEY=your_key_here" > .env.local
+
+# Run development server
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the platform.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+bun run build
+bun start
+```
 
-## Learn More
+## 🏗️ Architecture
 
-To learn more about Next.js, take a look at the following resources:
+### Multi-Agent System
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Intelligence Analyst Agent** - Assesses individual threats with confidence scoring
+2. **Correlation Agent** - Identifies patterns across multiple events
+3. **Response Coordinator Agent** - Determines optimal response strategy
+4. **Situation Report Agent** - Generates executive summaries
+5. **Operator Chat Agent** - Conversational interface with contextual awareness
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Tech Stack
 
-## Deploy on Vercel
+- **Frontend**: Next.js 16, React 19, TypeScript, Tailwind CSS, shadcn/ui
+- **AI**: OpenAI GPT-4o, Vercel AI SDK
+- **Runtime**: Bun
+- **Deployment**: Vercel-ready
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎮 How to Use
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Monitor Live Feed**: Watch real-time threat events appear in the left panel
+2. **Analyze Threats**: Click any event to trigger multi-agent analysis
+3. **Review Assessment**: See AI reasoning, confidence levels, and recommended actions
+4. **View Response Plan**: Check assigned teams, action items, and escalation status
+5. **Chat with AI**: Ask questions about threats or get operational recommendations
+6. **Generate SITREP**: Create executive situation reports for command
+
+## 💡 Real-World Application
+
+While this demo uses simulated sensors, Sentinel AI is designed to integrate with:
+- Physical security systems (cameras, motion detectors, access control)
+- Network monitoring tools (IDS/IPS, SIEM)
+- Edge devices (NVIDIA Jetson for local inference)
+- Defense infrastructure (perimeter sensors, surveillance systems)
+
+## 🔐 Security Note
+
+This is a demonstration platform. In production deployments:
+- All sensor data would be encrypted
+- AI decisions require human oversight for critical actions
+- Audit logs track all system activities
+- Role-based access control restricts operations
+
+## 👨‍💻 Author
+
+Built by Forge, an MS&E and ME student with hardware systems and defense products experience, incoming Hardware Engineer at Anduril Industries.
+
+## 📄 License
+
+MIT License - Built for TreeHacks 2026
